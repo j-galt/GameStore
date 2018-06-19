@@ -1,0 +1,20 @@
+﻿using GameStore.DAL.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
+
+namespace GameStore.DAL.EntityConfigurations
+{
+    public class CommentConfiguration : EntityTypeConfiguration<Comment>
+    {
+        public CommentConfiguration()
+        { 
+            Property(g => g.CommentId)                
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            // Self relationship.
+            HasOptional(c => c.Answer)
+                .WithMany()
+                .HasForeignKey(c => c.AnswerId);
+        }
+    }
+}

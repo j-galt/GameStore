@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace GameStore.DAL.Entities
 {
@@ -16,6 +14,7 @@ namespace GameStore.DAL.Entities
         public string GameId { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
+        public string PublisherId { get; set; }
 
         public Publisher Publisher { get; set; }
         public ICollection<Genre> Genres { get; set; }
