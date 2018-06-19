@@ -14,7 +14,7 @@ namespace GameStore.DAL.Migrations
                         CommentId = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
                         Body = c.String(),
-                        AnswerId = c.String(nullable: false, maxLength: 128),
+                        AnswerId = c.String(maxLength: 128),
                         Game_GameId = c.String(nullable: false, maxLength: 128),
                         Author_PublisherId = c.String(maxLength: 128),
                     })
@@ -42,18 +42,18 @@ namespace GameStore.DAL.Migrations
                         GameId = c.String(nullable: false, maxLength: 128),
                         GameName = c.String(),
                         Description = c.String(),
-                        Publisher_PublisherId = c.String(nullable: false, maxLength: 128),
+                        PublisherId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.GameId)
-                .ForeignKey("dbo.Publishers", t => t.Publisher_PublisherId, cascadeDelete: true)
-                .Index(t => t.Publisher_PublisherId);
+                .ForeignKey("dbo.Publishers", t => t.PublisherId, cascadeDelete: true)
+                .Index(t => t.PublisherId);
             
             CreateTable(
                 "dbo.Genres",
                 c => new
                     {
                         GenreName = c.String(nullable: false, maxLength: 128),
-                        SubGenreName = c.String(nullable: false, maxLength: 128),
+                        SubGenreName = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.GenreName)
                 .ForeignKey("dbo.Genres", t => t.SubGenreName)
@@ -98,7 +98,7 @@ namespace GameStore.DAL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Comments", "Author_PublisherId", "dbo.Publishers");
-            DropForeignKey("dbo.Games", "Publisher_PublisherId", "dbo.Publishers");
+            DropForeignKey("dbo.Games", "PublisherId", "dbo.Publishers");
             DropForeignKey("dbo.PlatformTypeGames", "GameId", "dbo.Games");
             DropForeignKey("dbo.PlatformTypeGames", "Type", "dbo.PlatformTypes");
             DropForeignKey("dbo.GameGenres", "GenreName", "dbo.Genres");
@@ -111,7 +111,7 @@ namespace GameStore.DAL.Migrations
             DropIndex("dbo.GameGenres", new[] { "GenreName" });
             DropIndex("dbo.GameGenres", new[] { "GameId" });
             DropIndex("dbo.Genres", new[] { "SubGenreName" });
-            DropIndex("dbo.Games", new[] { "Publisher_PublisherId" });
+            DropIndex("dbo.Games", new[] { "PublisherId" });
             DropIndex("dbo.Comments", new[] { "Author_PublisherId" });
             DropIndex("dbo.Comments", new[] { "Game_GameId" });
             DropIndex("dbo.Comments", new[] { "AnswerId" });
