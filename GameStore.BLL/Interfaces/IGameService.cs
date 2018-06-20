@@ -1,20 +1,16 @@
-﻿using GameStore.BLL.DTO;
-using System;
+﻿using GameStore.BLL.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameStore.BLL.Interfaces
 {
     public interface IGameService
     {
-        GameDto GetGame(string id);
-        IEnumerable<GameDto> GetAllGames();
+        Game GetGame(int id);
+        IEnumerable<Game> GetAllGames();
 
-        void CreateGame(GameDto gameDto);
-        GameDto EditGame(string id, GameDto gameDto);
+        void CreateGame(Game game);
+        Game EditGame(int id, Game updatedGame);
 
-        void DeleteGame(GameDto gameDto);
+        void DeleteGame(Game game);
     }
 }

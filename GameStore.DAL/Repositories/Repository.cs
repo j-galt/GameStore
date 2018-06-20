@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Interfaces;
+﻿using GameStore.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,51 +9,51 @@ namespace GameStore.DAL.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DbContext Context;
+        protected readonly GameStoreDbContext _dbContext;
 
-        public Repository(DbContext context)
+        public Repository(GameStoreDbContext dbContext)
         {
-            Context = context;
+            _dbContext = dbContext;
         }
 
-        public T Get(string id)
+        public T Get(int id)
         {
-            return Context.Set<T>().Find(id);
+            return _dbContext.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return Context.Set<T>().AsEnumerable();
+            return _dbContext.Set<T>().AsEnumerable();
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
-            return Context.Set<T>().Where(predicate).AsEnumerable();
+            return _dbContext.Set<T>().Where(predicate).AsEnumerable();
         }
 
         public T SingleOrDefault(Expression<Func<T, bool>> predicate)
         {
-            return Context.Set<T>().SingleOrDefault(predicate);
+            return _dbContext.Set<T>().SingleOrDefault(predicate);
         }
 
         public void Add(T entity)
         {
-            Context.Set<T>().Add(entity);
+            _dbContext.Set<T>().Add(entity);
         }
 
         public void AddRange(IEnumerable<T> entities)
         {
-            Context.Set<T>().AddRange(entities);
+            _dbContext.Set<T>().AddRange(entities);
         }
 
         public void Remove(T entity)
         {
-            Context.Set<T>().Remove(entity);
+            _dbContext.Set<T>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            Context.Set<T>().RemoveRange(entities);
+            _dbContext.Set<T>().RemoveRange(entities);
         }
     }
 }

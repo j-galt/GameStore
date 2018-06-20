@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Entities;
+﻿using GameStore.BLL.Entities;
 
 namespace GameStore.DAL.Repositories
 {

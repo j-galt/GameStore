@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Entities;
+﻿using GameStore.BLL.Entities;
 using System.Data.Entity;
 using GameStore.DAL.EntityConfigurations;
 
@@ -6,9 +6,10 @@ namespace GameStore.DAL
 {
     public class GameStoreDbContext : DbContext
     {
-        public GameStoreDbContext(string connStr) : base(connStr)
+        public GameStoreDbContext() : base("GameStoreDbContext")
         {
             this.Configuration.LazyLoadingEnabled = false;
+            //var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
 
         public DbSet<Comment> Comments { get; set; }

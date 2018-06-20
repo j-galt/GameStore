@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Interfaces;
+﻿using GameStore.BLL.Interfaces;
 using System.Threading.Tasks;
 
 namespace GameStore.DAL

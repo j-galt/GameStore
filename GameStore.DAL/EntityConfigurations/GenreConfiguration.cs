@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Entities;
+﻿using GameStore.BLL.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
@@ -14,9 +14,9 @@ namespace GameStore.DAL.EntityConfigurations
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             // Self relationships.
-            HasOptional(g => g.SubGenre)
+            HasOptional(g => g.ParentGenre)
                 .WithMany()
-                .HasForeignKey(g => g.SubGenreName);
+                .HasForeignKey(g => g.ParentGenreName);
         }
     }
 }

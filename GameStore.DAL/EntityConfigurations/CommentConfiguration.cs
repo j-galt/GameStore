@@ -1,4 +1,4 @@
-﻿using GameStore.DAL.Entities;
+﻿using GameStore.BLL.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
@@ -12,9 +12,9 @@ namespace GameStore.DAL.EntityConfigurations
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             // Self relationship.
-            HasOptional(c => c.Answer)
+            HasOptional(c => c.ParentComment)
                 .WithMany()
-                .HasForeignKey(c => c.AnswerId);
+                .HasForeignKey(c => c.ParentCommentId);
         }
     }
 }
