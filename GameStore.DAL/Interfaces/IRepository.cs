@@ -7,7 +7,7 @@ namespace GameStore.DAL.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        T Get(int id);
+        T Get(string id);
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 

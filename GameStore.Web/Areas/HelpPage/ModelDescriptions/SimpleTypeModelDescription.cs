@@ -1,0 +1,6 @@
+namespace GameStore.Web.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}

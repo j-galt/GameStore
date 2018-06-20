@@ -12,9 +12,9 @@ namespace GameStore.DAL
             _dbContext = dbContext;
         }
 
-        public async Task CompleteAsync()
+        public void Complete()
         {
-            await _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
 
         public void Dispose()

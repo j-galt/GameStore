@@ -13,7 +13,7 @@ namespace GameStore.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806192104367_InitialModel"; }
+            get { return "201806201040357_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

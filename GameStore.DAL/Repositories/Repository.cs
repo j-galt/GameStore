@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameStore.DAL.Repositories
 {
@@ -18,7 +16,7 @@ namespace GameStore.DAL.Repositories
             Context = context;
         }
 
-        public T Get(int id)
+        public T Get(string id)
         {
             return Context.Set<T>().Find(id);
         }

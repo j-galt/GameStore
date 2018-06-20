@@ -10,8 +10,6 @@ D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.CoreC
 D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.CopyComplete
 D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.dll
 D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
-D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.InitialModel.resources
-D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.cache
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.dll.config
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.dll
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\bin\Debug\GameStore.DAL.pdb
@@ -25,3 +23,5 @@ E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.dll
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.pdb
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.InitialModel.resources
 E:\Studies\epam\RD\Practice\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.cache
+D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.Migrations.InitialModel.resources
+D:\Illia_Pivtoraiko\GameStore\GameStore.DAL\obj\Debug\GameStore.DAL.csproj.GenerateResource.cache

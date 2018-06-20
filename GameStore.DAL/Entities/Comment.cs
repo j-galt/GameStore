@@ -9,9 +9,9 @@ namespace GameStore.DAL.Entities
         public string CommentId { get; set; }
         public string Name { get; set; }
         public string Body { get; set; }
-        public string AnswerId { get; set; }
+        public string ParentCommentId { get; set; }
 
-        public Comment Answer { get; set; }
+        public Comment ParentComment { get; set; }
         public Publisher Author { get; set; }
         public Game Game { get; set; }
     }

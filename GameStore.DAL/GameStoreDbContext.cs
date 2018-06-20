@@ -6,7 +6,7 @@ namespace GameStore.DAL
 {
     public class GameStoreDbContext : DbContext
     {
-        public GameStoreDbContext() : base("GameStoreDbContext")
+        public GameStoreDbContext(string connStr) : base(connStr)
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

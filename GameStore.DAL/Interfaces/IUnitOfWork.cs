@@ -5,6 +5,6 @@ namespace GameStore.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        Task CompleteAsync();
+        void Complete();
     }
 }
