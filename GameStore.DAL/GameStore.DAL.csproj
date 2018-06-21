@@ -56,9 +56,9 @@
     <Compile Include="EntityConfigurations\PlatformTypeConfiguration.cs" />
     <Compile Include="EntityConfigurations\PublisherConfiguration.cs" />
     <Compile Include="GameStoreDbContext.cs" />
-    <Compile Include="Migrations\201806202151257_InitialModel.cs" />
-    <Compile Include="Migrations\201806202151257_InitialModel.Designer.cs">
-      <DependentUpon>201806202151257_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201806211039438_InitialModel.cs" />
+    <Compile Include="Migrations\201806211039438_InitialModel.Designer.cs">
+      <DependentUpon>201806211039438_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +81,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806202151257_InitialModel.resx">
-      <DependentUpon>201806202151257_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806211039438_InitialModel.resx">
+      <DependentUpon>201806211039438_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

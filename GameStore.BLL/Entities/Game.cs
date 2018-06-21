@@ -14,7 +14,7 @@ namespace GameStore.BLL.Entities
         public int GameId { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
-        public string PublisherId { get; set; }
+        public int PublisherId { get; set; }
 
         public Publisher Publisher { get; set; }
         public ICollection<Genre> Genres { get; set; }
