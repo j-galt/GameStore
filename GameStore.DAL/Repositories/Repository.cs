@@ -38,6 +38,7 @@ namespace GameStore.DAL.Repositories
 
         public void Add(T entity)
         {
+            _dbContext.Set<T>().Attach(entity);
             _dbContext.Set<T>().Add(entity);
         }
 

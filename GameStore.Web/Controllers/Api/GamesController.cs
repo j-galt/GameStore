@@ -53,8 +53,6 @@ namespace GameStore.Web.Controllers.Api
             var game = _mapper.Map<GameCreateResource, Game>(gameResource);
             _gameService.CreateGame(game);
 
-            // Parse genres from gameResource and paste them into many-to-many table.
-
             return Request.CreateResponse(HttpStatusCode.OK, gameResource);
         }
 

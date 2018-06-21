@@ -8,10 +8,7 @@ namespace GameStore.DAL.EntityConfigurations
     {
         public PlatformTypeConfiguration()
         {
-            HasKey(g => g.Type);
-
-            Property(g => g.Type)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            HasKey(pt => pt.Type);
 
             // Many to many.
             HasMany(pt => pt.Games)

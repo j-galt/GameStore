@@ -10,9 +10,6 @@ namespace GameStore.DAL.EntityConfigurations
         {
             HasKey(g => g.GenreName);
 
-            Property(g => g.GenreName)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
             // Self relationships.
             HasOptional(g => g.ParentGenre)
                 .WithMany()

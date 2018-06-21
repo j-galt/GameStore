@@ -33,7 +33,7 @@ namespace GameStore.Web.App_Start
             builder.RegisterType<GameService>().As<IGameService>().InstancePerRequest();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
 
-            builder.RegisterModule(new AutoMapperConfig());
+            builder.RegisterModule(new AutoMapperModule());
 
             var container = builder.Build();
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
