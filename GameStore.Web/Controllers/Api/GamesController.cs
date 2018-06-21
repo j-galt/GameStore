@@ -27,7 +27,7 @@ namespace GameStore.Web.Controllers.Api
             if (games == null)
                 NotFound();
 
-            var gameResources = _mapper.Map<IEnumerable<Game>, IEnumerable<GameResource>>(games);
+            var gameResources = _mapper.Map<IEnumerable<Game>, IEnumerable<GameCreateResource>>(games);
             return Request.CreateResponse(HttpStatusCode.OK, gameResources);
         }
 
@@ -38,19 +38,24 @@ namespace GameStore.Web.Controllers.Api
             if (game == null)
                 NotFound();
 
+            var gameResource = _mapper.Map<Game, GameGetResource>(game);
             return Request.CreateResponse(HttpStatusCode.OK, game);
         }
 
-        public HttpResponseMessage Post([FromBody] Game game)
+        public HttpResponseMessage Post([FromBody] GameCreateResource gameResource)
         {
-            if (game == null)
+            if (gameResource == null)
                 NotFound();
 
             if (!ModelState.IsValid)
                 BadRequest(ModelState);
 
+            var game = _mapper.Map<GameCreateResource, Game>(gameResource);
             _gameService.CreateGame(game);
-            return Request.CreateResponse(HttpStatusCode.OK, game);
+
+            // Parse genres from gameResource and paste them into many-to-many table.
+
+            return Request.CreateResponse(HttpStatusCode.OK, gameResource);
         }
 
         public HttpResponseMessage Put(int id, [FromBody] Game game)

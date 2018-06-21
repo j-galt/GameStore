@@ -17,9 +17,7 @@ namespace GameStore.Web.App_Start
             builder.Register(context => new MapperConfiguration(cfg =>
             {
                 foreach (var profile in context.Resolve<IEnumerable<Profile>>())
-                {
                     cfg.AddProfile(profile);
-                }
             })).AsSelf().SingleInstance();
 
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve))

@@ -135,7 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiResources\CommentResource.cs" />
-    <Compile Include="ApiResources\GameResource.cs" />
+    <Compile Include="ApiResources\GameCreateResource.cs" />
+    <Compile Include="ApiResources\GameGetResource.cs" />
+    <Compile Include="ApiResources\GenreResource.cs" />
+    <Compile Include="ApiResources\PlatformTypeResource.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
