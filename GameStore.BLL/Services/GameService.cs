@@ -2,18 +2,19 @@
 using GameStore.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace GameStore.BLL.Services
 {
     public class GameService : IGameService
     {
-        private readonly IRepository<Game> _gameRepository;
+        private readonly IGameRepository _gameRepository;
         private readonly IRepository<PlatformType> _ptRepository;
         private readonly IRepository<Genre> _genreRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public GameService(IRepository<Game> gameRepository, IUnitOfWork unitOfWork, 
+        public GameService(IGameRepository gameRepository, IUnitOfWork unitOfWork,
             IRepository<PlatformType> ptRepository, IRepository<Genre> genreRepository)
         {
             _gameRepository = gameRepository;
@@ -36,12 +37,36 @@ namespace GameStore.BLL.Services
 
         public Game EditGame(int id, Game updatedGame)
         {
-            var game = _gameRepository.Get(id);
+            var game = _gameRepository.GetGameWithRelatedData(id);
             if (game == null) throw new ArgumentNullException();
 
             game.GameName = updatedGame.GameName;
             game.Description = updatedGame.Description;
 
+            // fps, shooter -> fps delete
+
+            //Debug.WriteLine("************");
+            //foreach (var gr in game.Genres)
+            //    Debug.WriteLine(gr.GenreName);
+            //Debug.WriteLine("-----");
+
+
+            var gn = game.Genres.FirstOrDefault(x => x.GenreName == updatedGame.GameName);
+            game.Genres.Remove(gn);
+            _unitOfWork.Complete();
+
+            foreach (var gr in game.Genres)
+                Debug.WriteLine(gr.GenreName);
+
+
+
+            //foreach (var genre in updatedGame.Genres)
+            //    if (!game.Genres.Contains(genre))
+            //        game.Genres.Remove(genre);
+
+
+
+            //_gameRepository.UpdateGame(game);
             _unitOfWork.Complete();
 
             return game;
@@ -54,7 +79,7 @@ namespace GameStore.BLL.Services
 
         public Game GetGame(int id)
         {
-            return _gameRepository.Get(id);
+            return _gameRepository.GetGameWithRelatedData(id);
         }
 
         public IEnumerable<Game> GetGamesByGenre(string name)

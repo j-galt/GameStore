@@ -25,9 +25,9 @@ namespace GameStore.Web.Controllers.Api
             var games = _gameService.GetAllGames();
 
             if (games == null)
-                NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound);
 
-            var gameResources = _mapper.Map<IEnumerable<Game>, IEnumerable<GameCreateResource>>(games);
+            var gameResources = _mapper.Map<IEnumerable<Game>, IEnumerable<GetGameResource>>(games);
             return Request.CreateResponse(HttpStatusCode.OK, gameResources);
         }
 
@@ -36,36 +36,40 @@ namespace GameStore.Web.Controllers.Api
             var game = _gameService.GetGame(id);
 
             if (game == null)
-                NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound);
 
-            var gameResource = _mapper.Map<Game, GameGetResource>(game);
-            return Request.CreateResponse(HttpStatusCode.OK, game);
-        }
-
-        public HttpResponseMessage Post([FromBody] GameCreateResource gameResource)
-        {
-            if (gameResource == null)
-                NotFound();
-
-            if (!ModelState.IsValid)
-                BadRequest(ModelState);
-
-            var game = _mapper.Map<GameCreateResource, Game>(gameResource);
-            _gameService.CreateGame(game);
-
+            var gameResource = _mapper.Map<Game, GetGameResource>(game);
             return Request.CreateResponse(HttpStatusCode.OK, gameResource);
         }
 
-        public HttpResponseMessage Put(int id, [FromBody] Game game)
+        public HttpResponseMessage Post([FromBody] CreateGameResource gameResource)
         {
-            if (game == null)
-                NotFound();
+            if (gameResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
 
             if (!ModelState.IsValid)
-                BadRequest(ModelState);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
 
+            var game = _mapper.Map<CreateGameResource, Game>(gameResource);
+            _gameService.CreateGame(game);
+
+            var getGameRes = _mapper.Map<Game, GetGameResource>(game);
+            return Request.CreateResponse(HttpStatusCode.OK, getGameRes);
+        }
+
+        public HttpResponseMessage Put(int id, [FromBody] CreateGameResource gameResource)
+        {
+            if (gameResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var game = _mapper.Map<CreateGameResource, Game>(gameResource);
             _gameService.EditGame(id, game);
-            return Request.CreateResponse(HttpStatusCode.OK, game);
+
+            var getGameRes = _mapper.Map<Game, GetGameResource>(game);
+            return Request.CreateResponse(HttpStatusCode.OK, getGameRes);
         }
 
         public HttpResponseMessage Delete(int id)

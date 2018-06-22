@@ -56,25 +56,9 @@
     <Compile Include="EntityConfigurations\PlatformTypeConfiguration.cs" />
     <Compile Include="EntityConfigurations\PublisherConfiguration.cs" />
     <Compile Include="GameStoreDbContext.cs" />
-    <Compile Include="Migrations\201806211039438_InitialModel.cs" />
-    <Compile Include="Migrations\201806211039438_InitialModel.Designer.cs">
-      <DependentUpon>201806211039438_InitialModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806211906157_InitialModel1.cs" />
-    <Compile Include="Migrations\201806211906157_InitialModel1.Designer.cs">
-      <DependentUpon>201806211906157_InitialModel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806212027576_InitialModel2.cs" />
-    <Compile Include="Migrations\201806212027576_InitialModel2.Designer.cs">
-      <DependentUpon>201806212027576_InitialModel2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806212030453_InitialModel3.cs" />
-    <Compile Include="Migrations\201806212030453_InitialModel3.Designer.cs">
-      <DependentUpon>201806212030453_InitialModel3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806212037085_InitialModel4.cs" />
-    <Compile Include="Migrations\201806212037085_InitialModel4.Designer.cs">
-      <DependentUpon>201806212037085_InitialModel4.cs</DependentUpon>
+    <Compile Include="Migrations\201806220921148_InitialModel.cs" />
+    <Compile Include="Migrations\201806220921148_InitialModel.Designer.cs">
+      <DependentUpon>201806220921148_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,20 +81,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806211039438_InitialModel.resx">
-      <DependentUpon>201806211039438_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806211906157_InitialModel1.resx">
-      <DependentUpon>201806211906157_InitialModel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806212027576_InitialModel2.resx">
-      <DependentUpon>201806212027576_InitialModel2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806212030453_InitialModel3.resx">
-      <DependentUpon>201806212030453_InitialModel3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806212037085_InitialModel4.resx">
-      <DependentUpon>201806212037085_InitialModel4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806220921148_InitialModel.resx">
+      <DependentUpon>201806220921148_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

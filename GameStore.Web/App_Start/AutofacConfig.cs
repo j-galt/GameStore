@@ -30,6 +30,7 @@ namespace GameStore.Web.App_Start
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+            builder.RegisterType<GameRepository>().As<IGameRepository>().InstancePerRequest();
             builder.RegisterType<GameService>().As<IGameService>().InstancePerRequest();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
 

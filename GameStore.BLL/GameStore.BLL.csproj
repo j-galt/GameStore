@@ -47,6 +47,7 @@
     <Compile Include="Entities\PlatformType.cs" />
     <Compile Include="Entities\Publisher.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Interfaces\IGameRepository.cs" />
     <Compile Include="Interfaces\IGameService.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IService.cs" />

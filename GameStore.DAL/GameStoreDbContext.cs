@@ -9,7 +9,7 @@ namespace GameStore.DAL
         public GameStoreDbContext() : base("GameStoreDbContext")
         {
             this.Configuration.LazyLoadingEnabled = false;
-            //var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Comment> Comments { get; set; }

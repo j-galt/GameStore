@@ -9,10 +9,10 @@ namespace GameStore.Web.Mapping
         public MappingProfile()
         {
             // Domain to ApiResource.
-            CreateMap<Game, GameGetResource>();
+            CreateMap<Game, GetGameResource>();
 
             // ApiResource to Domain.
-            CreateMap<GameCreateResource, Game>()
+            CreateMap<CreateGameResource, Game>()
                 .ForMember(g => g.GameId, opt => opt.Ignore())
                 .ForMember(g => g.Genres, opt => opt.MapFrom(gcr => gcr.Genres))
                 .ForMember(g => g.PlatformTypes, opt => opt.MapFrom(gcr => gcr.PlatformTypes));

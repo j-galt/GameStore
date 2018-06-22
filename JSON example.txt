@@ -1,0 +1,13 @@
+{
+    "GameName": "Counter Strike1",
+    "Description": "CS",
+    "PublisherId": 1,
+    "Genres": [
+    	{ "GenreName": "Shooter" },
+    	{ "GenreName": "FPS" }
+	],
+    "PlatformTypes": [
+    	{ "Type": "PC" },
+    	{ "Type": "Xbox360" }
+	]  
+}

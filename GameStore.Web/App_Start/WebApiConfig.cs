@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -16,6 +17,11 @@ namespace GameStore.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters
+                .JsonFormatter
+                .SerializerSettings
+                .ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }
