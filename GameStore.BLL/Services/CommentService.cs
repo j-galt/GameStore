@@ -8,21 +8,25 @@ using System.Threading.Tasks;
 
 namespace GameStore.BLL.Services
 {
-    public class CommentService : ICommentService
+    public class CommentService : Service<Comment>, ICommentService
     {
         private readonly IRepository<Comment> _commentRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         public CommentService(IRepository<Comment> commentRepository, IUnitOfWork unitOfWork)
+            : base(commentRepository, unitOfWork)
         {
             _commentRepository = commentRepository;
-            _unitOfWork = unitOfWork;
         }
 
         public void CreateComment(Comment comment)
         {
             _commentRepository.Add(comment);
             _unitOfWork.Complete();
+        }
+
+        public override Comment Edit(int id, Comment updatedEntity)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Comment> GetCommentsByGameId(int id)

@@ -10,13 +10,16 @@ namespace GameStore.Web.ApiResources
         public GetGameResource()
         {
             Comments = new List<CommentResource>();
+            Genres = new List<GenreResource>();
+            PlatformTypes = new List<PlatformTypeResource>();
         }
 
-        public int GameId { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
         public string PublisherName { get; set; }
 
         public IEnumerable<CommentResource> Comments { get; set; }
+        public IEnumerable<GenreResource> Genres { get; set; }
+        public IEnumerable<PlatformTypeResource> PlatformTypes { get; set; }
     }
 }

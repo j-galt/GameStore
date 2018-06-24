@@ -134,6 +134,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\GenresController.cs" />
+    <Compile Include="ApiControllers\PublishersController.cs" />
     <Compile Include="ApiResources\CommentResource.cs" />
     <Compile Include="ApiResources\CreateGameResource.cs" />
     <Compile Include="ApiResources\GetGameResource.cs" />
@@ -143,7 +145,7 @@
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Api\GamesController.cs" />
+    <Compile Include="ApiControllers\GamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -7,11 +7,17 @@ namespace GameStore.Web.ApiResources
 {
     public class CreateGameResource
     {
+        public CreateGameResource()
+        {
+            Genres = new List<GenreResource>();
+            PlatformTypes = new List<PlatformTypeResource>();
+        }
+
         public string GameName { get; set; }
         public string Description { get; set; }
         public int PublisherId { get; set; }
 
-        public ICollection<GenreResource> Genres { get; set; }
-        public ICollection<PlatformTypeResource> PlatformTypes { get; set; }
+        public IEnumerable<GenreResource> Genres { get; set; }
+        public IEnumerable<PlatformTypeResource> PlatformTypes { get; set; }
     }
 }

@@ -47,14 +47,19 @@
     <Compile Include="Entities\PlatformType.cs" />
     <Compile Include="Entities\Publisher.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
-    <Compile Include="Interfaces\IGameRepository.cs" />
     <Compile Include="Interfaces\IGameService.cs" />
+    <Compile Include="Interfaces\IGenreRepository.cs" />
+    <Compile Include="Interfaces\IPlatformTypeRepository.cs" />
+    <Compile Include="Interfaces\IPublisherService.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\PublisherService.cs" />
+    <Compile Include="Services\Service.cs" />
+    <Compile Include="Utilities\ICollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

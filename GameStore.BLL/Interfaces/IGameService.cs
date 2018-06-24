@@ -3,16 +3,10 @@ using System.Collections.Generic;
 
 namespace GameStore.BLL.Interfaces
 {
-    public interface IGameService
+    public interface IGameService : IService<Game>
     {
-        Game GetGame(int id);
+        Game Get(int id);
         IEnumerable<Game> GetGamesByGenre(string name);
         IEnumerable<Game> GetGamesByPlatformTypes(IEnumerable<PlatformType> platformTypes);
-        IEnumerable<Game> GetAllGames();
-
-        void CreateGame(Game game);
-        Game EditGame(int id, Game updatedGame);
-
-        void DeleteGame(Game game);
     }
 }

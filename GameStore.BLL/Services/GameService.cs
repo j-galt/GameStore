@@ -4,94 +4,73 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using GameStore;
+using GameStore.BLL.Utilities;
+using System.Linq.Expressions;
 
 namespace GameStore.BLL.Services
 {
-    public class GameService : IGameService
+    public class GameService : Service<Game>, IGameService
     {
-        private readonly IGameRepository _gameRepository;
-        private readonly IRepository<PlatformType> _ptRepository;
-        private readonly IRepository<Genre> _genreRepository;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public GameService(IGameRepository gameRepository, IUnitOfWork unitOfWork,
-            IRepository<PlatformType> ptRepository, IRepository<Genre> genreRepository)
+        private readonly IPlatformTypeRepository _ptRepository;
+        private readonly IGenreRepository _genreRepository;
+        
+        public GameService(IRepository<Game> gameRepository, IUnitOfWork unitOfWork,
+            IPlatformTypeRepository ptRepository, IGenreRepository genreRepository) 
+            : base(gameRepository, unitOfWork)
         {
-            _gameRepository = gameRepository;
             _ptRepository = ptRepository;
             _genreRepository = genreRepository;
-            _unitOfWork = unitOfWork;
         }
 
-        public void CreateGame(Game game)
+        public Game Get(int id)
         {
-            _gameRepository.Add(game);
-            _unitOfWork.Complete();
+            return base.Get(g => g.GameId == id,
+                g => g.Genres, g => g.Publisher,
+                g => g.PlatformTypes, g => g.Comments);
         }
 
-        public void DeleteGame(Game game)
-        {
-            _gameRepository.Remove(game);
-            _unitOfWork.Complete();
-        }
+        public override Game Edit(int id, Game updatedGame)
+        {            
+            var game = _repository.GetWithIncludes(g => g.GameId == id, 
+                g => g.Genres, g => g.PlatformTypes)
+                .FirstOrDefault();
 
-        public Game EditGame(int id, Game updatedGame)
-        {
-            var game = _gameRepository.GetGameWithRelatedData(id);
             if (game == null) throw new ArgumentNullException();
 
             game.GameName = updatedGame.GameName;
             game.Description = updatedGame.Description;
 
-            // fps, shooter -> fps delete
+            var updatedGenres = _genreRepository
+                .GetGenresByNames(updatedGame.Genres
+                .Select(g => g.GenreName));
 
-            //Debug.WriteLine("************");
-            //foreach (var gr in game.Genres)
-            //    Debug.WriteLine(gr.GenreName);
-            //Debug.WriteLine("-----");
+            var updatedPt = _ptRepository
+                .GetPlatformTypesByNames(updatedGame.PlatformTypes
+                .Select(pt => pt.Type));
 
-
-            var gn = game.Genres.FirstOrDefault(x => x.GenreName == updatedGame.GameName);
-            game.Genres.Remove(gn);
-            _unitOfWork.Complete();
-
-            foreach (var gr in game.Genres)
-                Debug.WriteLine(gr.GenreName);
-
-
-
-            //foreach (var genre in updatedGame.Genres)
-            //    if (!game.Genres.Contains(genre))
-            //        game.Genres.Remove(genre);
-
-
-
-            //_gameRepository.UpdateGame(game);
+            game.Genres.RefreshItems(updatedGenres.ToList());
+            game.PlatformTypes.RefreshItems(updatedPt.ToList());
+           
             _unitOfWork.Complete();
 
             return game;
-        }
-
-        public IEnumerable<Game> GetAllGames()
-        {
-            return _gameRepository.GetAll();
-        }
-
-        public Game GetGame(int id)
-        {
-            return _gameRepository.GetGameWithRelatedData(id);
-        }
+        }     
 
         public IEnumerable<Game> GetGamesByGenre(string name)
         {
-            var genre = _genreRepository.Find(g => g.GenreName == name).FirstOrDefault();
+            var genre = _genreRepository
+                .Find(g => g.GenreName == name)
+                .FirstOrDefault();
 
-            return _gameRepository.Find(g => g.Genres.Contains(genre));
+            return _repository.Find(g => g.Genres.Contains(genre));
         }
 
         public IEnumerable<Game> GetGamesByPlatformTypes(IEnumerable<PlatformType> platformTypes)
         {
             throw new NotImplementedException();
         }
-    }
+
+
+    }   
 }

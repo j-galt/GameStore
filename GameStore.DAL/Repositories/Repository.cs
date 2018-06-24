@@ -16,6 +16,16 @@ namespace GameStore.DAL.Repositories
             _dbContext = dbContext;
         }
 
+        public IEnumerable<T> GetWithIncludes(Expression<Func<T, bool>> predicate, 
+            params Expression<Func<T, object>>[] includes)
+        {
+            var query = includes
+                .Aggregate(_dbContext.Set<T>().AsQueryable(), 
+                (current, include) => current.Include(include));
+
+            return query.Where(predicate);
+        }
+
         public T Get(int id)
         {
             return _dbContext.Set<T>().Find(id);
@@ -55,6 +65,12 @@ namespace GameStore.DAL.Repositories
         public void RemoveRange(IEnumerable<T> entities)
         {
             _dbContext.Set<T>().RemoveRange(entities);
+        }
+
+        public void Update(T entity)
+        {
+            _dbContext.Set<T>().Attach(entity);
+            _dbContext.Entry(entity).State = EntityState.Modified;
         }
     }
 }

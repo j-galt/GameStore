@@ -25,16 +25,18 @@ namespace GameStore.Web.App_Start
             var configuration = GlobalConfiguration.Configuration;
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterModule(new AutoMapperModule());
 
             builder.RegisterType<GameStoreDbContext>().AsSelf().InstancePerRequest();            
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
-            builder.RegisterType<GameRepository>().As<IGameRepository>().InstancePerRequest();
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerRequest();
+            builder.RegisterGeneric(typeof(Service<>)).As(typeof(IService<>)).InstancePerRequest();
+            builder.RegisterType<GenreRepository>().As<IGenreRepository>().InstancePerRequest();
+            builder.RegisterType<PlatformTypeRepository>().As<IPlatformTypeRepository>().InstancePerRequest();
             builder.RegisterType<GameService>().As<IGameService>().InstancePerRequest();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
-
-            builder.RegisterModule(new AutoMapperModule());
+            builder.RegisterType<PublisherService>().As<IPublisherService>().InstancePerRequest();
 
             var container = builder.Build();
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
