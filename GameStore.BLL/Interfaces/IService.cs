@@ -9,7 +9,7 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IService<T> where T : class
     {
-        T Get(Expression<Func<T, bool>> criteria, 
+        T Get(Expression<Func<T, bool>> predicate, 
             params Expression<Func<T, object>>[] includes);
 
         IEnumerable<T> GetAll();

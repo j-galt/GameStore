@@ -10,6 +10,5 @@ namespace GameStore.BLL.Interfaces
     public interface ICommentService : IService<Comment>
     {
         IEnumerable<Comment> GetCommentsByGameId(int id);
-        void CreateComment(Comment comment);
     }
 }

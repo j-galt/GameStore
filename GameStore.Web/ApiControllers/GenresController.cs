@@ -23,10 +23,17 @@ namespace GameStore.Web.ApiControllers
             _mapper = mapper;
         }
 
-        // GET: api/Genres
-        public IEnumerable<string> Get()
+        public HttpResponseMessage GetAllGenres()
         {
-            return new string[] { "value1", "value2" };
+            var genres = _genreService.GetAll();
+
+            if (genres == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            var gameResources = _mapper.Map<IEnumerable<Genre>,
+                IEnumerable<GenreResource>>(genres);
+
+            return Request.CreateResponse(HttpStatusCode.OK, gameResources);
         }
 
         [Route("{id}/games")]
@@ -43,25 +50,45 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, games);
         }
 
-        // GET: api/Genres/5
-        public string Get(int id)
+        public HttpResponseMessage GetGenre(string name)
         {
-            return "value";
+            var genre = _genreService.Get(g => g.GenreName == name);
+
+            if (genre == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            var gameResource = _mapper.Map<Genre, GenreResource>(genre);
+            return Request.CreateResponse(HttpStatusCode.OK, gameResource);
         }
 
-        // POST: api/Genres
-        public void Post([FromBody]string value)
+        public HttpResponseMessage CreateGenre([FromBody] GenreResource genreResource)
         {
+            if (genreResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var genre = _mapper.Map<GenreResource, Genre>(genreResource);
+            _genreService.Create(genre);
+
+            var getGameRes = _mapper.Map<Genre, GenreResource>(genre);
+            return Request.CreateResponse(HttpStatusCode.OK, getGameRes);
         }
 
-        // PUT: api/Genres/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Genres/5
-        public void Delete(int id)
+        public HttpResponseMessage DeleteGenre(string name)
         {
+            var genre = _genreService.Get(g => g.GenreName == name);
+
+            if (genre == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            _genreService.Delete(genre);
+            return Request.CreateResponse(HttpStatusCode.OK, name);
         }
     }
 }

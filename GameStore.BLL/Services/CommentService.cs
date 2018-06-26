@@ -18,10 +18,17 @@ namespace GameStore.BLL.Services
             _commentRepository = commentRepository;
         }
 
-        public void CreateComment(Comment comment)
+        public override void Create(Comment comment)
         {
-            _commentRepository.Add(comment);
-            _unitOfWork.Complete();
+            if (comment == null) throw new ArgumentNullException(nameof(comment));
+
+            if (comment.GameId == 0)
+            {
+                var parentComment = _repository.Get((int)comment.ParentCommentId);
+                comment.GameId = parentComment.GameId;
+            }
+
+            base.Create(comment);
         }
 
         public override Comment Edit(int id, Comment updatedEntity)

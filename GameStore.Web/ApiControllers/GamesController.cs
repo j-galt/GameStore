@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Web;
 using System.Web.Http;
 
 namespace GameStore.Web.ApiControllers
@@ -142,7 +143,7 @@ namespace GameStore.Web.ApiControllers
         }
 
         [HttpPost, Route("{id}/comments")]
-        public HttpResponseMessage CreateComment([FromBody] CommentResource commentResource)
+        public HttpResponseMessage CreateComment([FromBody] CommentResource commentResource, int id)
         {
             if (commentResource == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -151,24 +152,26 @@ namespace GameStore.Web.ApiControllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
 
             var comment = _mapper.Map<CommentResource, Comment>(commentResource);
+            comment.GameId = id;
             _commentService.Create(comment);
 
             return Request.CreateResponse(HttpStatusCode.OK, commentResource);
         }
-        
-        //[HttpPost, Route("api/comments/{id}/comments")]
-        //public HttpResponseMessage CreateAnswer([FromBody] CommentResource commentResource)
-        //{
-        //    if (commentResource == null)
-        //        return Request.CreateResponse(HttpStatusCode.NotFound);
 
-        //    if (!ModelState.IsValid)
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+        [HttpPost, Route("~/api/comments/{id}/comments")]
+        public HttpResponseMessage CreateAnswer([FromBody] CommentResource commentResource, int id)
+        {
+            if (commentResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
 
-        //    var comment = _mapper.Map<CommentResource, Comment>(commentResource);
-        //    _commentService.Create(comment);
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
 
-        //    return Request.CreateResponse(HttpStatusCode.OK, commentResource);
-        //}
+            var comment = _mapper.Map<CommentResource, Comment>(commentResource);
+            comment.ParentCommentId = id;
+            _commentService.Create(comment);
+
+            return Request.CreateResponse(HttpStatusCode.OK, commentResource);
+        }
     }
 }

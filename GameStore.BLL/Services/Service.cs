@@ -40,10 +40,10 @@ namespace GameStore.BLL.Services
             _unitOfWork.Complete();
         }        
 
-        public virtual T Get(Expression<Func<T, bool>> criteria, 
+        public virtual T Get(Expression<Func<T, bool>> predicate, 
             params Expression<Func<T, object>>[] includes)
         {
-            var entity = _repository.GetWithIncludes(criteria, includes);
+            var entity = _repository.GetWithIncludes(predicate, includes);
             if (entity == null) throw new ArgumentNullException(nameof(entity));
 
             return entity.FirstOrDefault();
