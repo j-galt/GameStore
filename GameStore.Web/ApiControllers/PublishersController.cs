@@ -23,22 +23,34 @@ namespace GameStore.Web.ApiControllers
             _mapper = mapper;
         }
 
-        // GET: api/Publishers
-        public IEnumerable<string> Get()
+        public HttpResponseMessage GetAllPublishers()
         {
-            return new string[] { "value1", "value2" };
+            var publishers = _publService.GetAll();
+
+            if (publishers == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            var publResources = _mapper.Map<IEnumerable<Publisher>,
+                IEnumerable<PublisherResource>>(publishers);
+
+            return Request.CreateResponse(HttpStatusCode.OK, publResources);
         }
 
-        // GET: api/Publishers/5
-        public string Get(int id)
+        public HttpResponseMessage GetPublisher(int id)
         {
-            return "value";
+            var publisher = _publService.Get(p => p.PublisherId == id);
+
+            if (publisher == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            var publResource = _mapper.Map<Publisher, PublisherResource>(publisher);
+            return Request.CreateResponse(HttpStatusCode.OK, publResource);
         }
 
         [Route("{id}/games")]
         public HttpResponseMessage GetPublisherGames(int id)
         {
-            var publisher = _publService.Get(id);
+            var publisher = _publService.Get(p => p.PublisherId == id);
 
             if (publisher == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -49,19 +61,45 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, games);
         }
 
-        // POST: api/Publishers
-        public void Post([FromBody]string value)
+        public HttpResponseMessage CreatePublisher([FromBody] PublisherResource publResource)
         {
+            if (publResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var publisher = _mapper.Map<PublisherResource, Publisher>(publResource);
+            _publService.Create(publisher);
+
+            var publRes = _mapper.Map<Publisher, PublisherResource>(publisher);
+            return Request.CreateResponse(HttpStatusCode.OK, publRes);
         }
 
-        // PUT: api/Publishers/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage EditPublisher(int id, [FromBody] PublisherResource publResource)
         {
+            if (publResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var publisher = _mapper.Map<PublisherResource, Publisher>(publResource);
+            _publService.Edit(id, publisher);
+
+            var publRes = _mapper.Map<Publisher, PublisherResource>(publisher);
+            return Request.CreateResponse(HttpStatusCode.OK, publRes);
         }
 
-        // DELETE: api/Publishers/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            var publisher = _publService.Get(p => p.PublisherId == id);
+
+            if (publisher == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            _publService.Delete(publisher);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }

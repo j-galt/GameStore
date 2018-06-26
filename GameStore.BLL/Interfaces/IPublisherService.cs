@@ -9,6 +9,5 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IPublisherService : IService<Publisher>
     {
-        Publisher Get(int id);
     }
 }

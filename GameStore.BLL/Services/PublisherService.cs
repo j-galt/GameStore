@@ -25,12 +25,14 @@ namespace GameStore.BLL.Services
 
         public override Publisher Edit(int id, Publisher updatedEntity)
         {
-            throw new NotImplementedException();
-        }
+            var publiser = _repository.Get(id);
+            if (publiser == null) throw new ArgumentNullException();
 
-        public Publisher GetPublisher(int id)
-        {
-            return _publRepository.Get(id);
+            publiser.Name = updatedEntity.Name;
+
+            _unitOfWork.Complete();
+
+            return publiser;
         }
     }
 }

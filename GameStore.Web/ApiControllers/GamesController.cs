@@ -18,12 +18,15 @@ namespace GameStore.Web.ApiControllers
     {
         private readonly IGameService _gameService;
         private readonly ICommentService _commentService;
+        private readonly IGenreService _genreService;
         private readonly IMapper _mapper;
 
-        public GamesController(IGameService gameService, ICommentService commentService, IMapper mapper)
+        public GamesController(IGameService gameService, ICommentService commentService, 
+            IGenreService genreService,  IMapper mapper)
         {
             _gameService = gameService;
             _commentService = commentService;
+            _genreService = genreService;
             _mapper = mapper;
         }
 
@@ -63,6 +66,20 @@ namespace GameStore.Web.ApiControllers
                 IEnumerable<GenreResource>>(game.Genres);
 
             return Request.CreateResponse(HttpStatusCode.OK, genreResources);
+        }
+
+        [Route("~/api/genre/{id}/games")]
+        public HttpResponseMessage GetGamesByGenre(string id)
+        {
+            var genre = _genreService.Get(g => g.GenreName == id, g => g.Games);
+
+            if (genre == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            var games = _mapper.Map<IEnumerable<Game>,
+                IEnumerable<GetGameResource>>(genre.Games);
+
+            return Request.CreateResponse(HttpStatusCode.OK, games);
         }
 
         public HttpResponseMessage CreateGame([FromBody] CreateGameResource gameResource)

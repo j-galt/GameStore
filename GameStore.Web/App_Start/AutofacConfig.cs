@@ -37,6 +37,7 @@ namespace GameStore.Web.App_Start
             builder.RegisterType<GameService>().As<IGameService>().InstancePerRequest();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
             builder.RegisterType<PublisherService>().As<IPublisherService>().InstancePerRequest();
+            builder.RegisterType<GenreService>().As<IGenreService>().InstancePerRequest();
 
             var container = builder.Build();
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

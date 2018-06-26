@@ -14,10 +14,10 @@ namespace GameStore.Web.ApiControllers
     [RoutePrefix("api/genres")]
     public class GenresController : ApiController
     {
-        private readonly IService<Genre> _genreService;
+        private readonly IGenreService _genreService;
         private readonly IMapper _mapper;
 
-        public GenresController(IService<Genre> genreService, IMapper mapper)
+        public GenresController(IGenreService genreService, IMapper mapper)
         {
             _genreService = genreService;
             _mapper = mapper;
@@ -34,20 +34,6 @@ namespace GameStore.Web.ApiControllers
                 IEnumerable<GenreResource>>(genres);
 
             return Request.CreateResponse(HttpStatusCode.OK, gameResources);
-        }
-
-        [Route("{id}/games")]
-        public HttpResponseMessage GetGamesByGenre(string id)
-        {
-            var genre = _genreService.Get(g => g.GenreName == id, g => g.Games);
-
-            if (genre == null)
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-
-            var games = _mapper.Map<IEnumerable<Game>,
-                IEnumerable<GetGameResource>>(genre.Games);
-
-            return Request.CreateResponse(HttpStatusCode.OK, games);
         }
 
         public HttpResponseMessage GetGenre(string name)
@@ -76,8 +62,19 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, getGameRes);
         }
 
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage EditGenre(int id, [FromBody] GenreResource genreResource)
         {
+            if (genreResource == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+
+            if (!ModelState.IsValid)
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            var genre = _mapper.Map<GenreResource, Genre>(genreResource);
+            _genreService.Edit(id, genre);
+
+            var genreRes = _mapper.Map<Genre, GenreResource>(genre);
+            return Request.CreateResponse(HttpStatusCode.OK, genreRes);
         }
 
         public HttpResponseMessage DeleteGenre(string name)
