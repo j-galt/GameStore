@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Extras.NLog;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using AutoMapper;
@@ -26,14 +27,13 @@ namespace GameStore.Web.App_Start
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             builder.RegisterModule(new AutoMapperModule());
+            builder.RegisterModule<NLogModule>();
 
             builder.RegisterType<GameStoreDbContext>().AsSelf().InstancePerRequest();            
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerRequest();
             builder.RegisterGeneric(typeof(Service<>)).As(typeof(IService<>)).InstancePerRequest();
-            builder.RegisterType<GenreRepository>().As<IGenreRepository>().InstancePerRequest();
-            builder.RegisterType<PlatformTypeRepository>().As<IPlatformTypeRepository>().InstancePerRequest();
             builder.RegisterType<GameService>().As<IGameService>().InstancePerRequest();
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
             builder.RegisterType<PublisherService>().As<IPublisherService>().InstancePerRequest();

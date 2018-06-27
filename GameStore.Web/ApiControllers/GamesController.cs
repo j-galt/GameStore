@@ -71,7 +71,7 @@ namespace GameStore.Web.ApiControllers
         [Route("~/api/genre/{id}/games")]
         public HttpResponseMessage GetGamesByGenre(string id)
         {
-            var genre = _genreService.Get(g => g.GenreName == id, g => g.Games);
+            var genre = _genreService.Get(id);
 
             if (genre == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);

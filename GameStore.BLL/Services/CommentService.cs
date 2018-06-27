@@ -36,6 +36,11 @@ namespace GameStore.BLL.Services
             throw new NotImplementedException();
         }
 
+        public Comment Get(int id)
+        {
+            return base.Get(c => c.CommentId == id);
+        }
+
         public IEnumerable<Comment> GetCommentsByGameId(int id)
         {
             return _commentRepository.Find(c => c.Game.GameId == id);

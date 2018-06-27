@@ -38,7 +38,7 @@ namespace GameStore.Web.ApiControllers
 
         public HttpResponseMessage GetPublisher(int id)
         {
-            var publisher = _publService.Get(p => p.PublisherId == id);
+            var publisher = _publService.Get(id);
 
             if (publisher == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -50,7 +50,7 @@ namespace GameStore.Web.ApiControllers
         [Route("{id}/games")]
         public HttpResponseMessage GetPublisherGames(int id)
         {
-            var publisher = _publService.Get(p => p.PublisherId == id);
+            var publisher = _publService.Get(id);
 
             if (publisher == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -93,7 +93,7 @@ namespace GameStore.Web.ApiControllers
 
         public HttpResponseMessage Delete(int id)
         {
-            var publisher = _publService.Get(p => p.PublisherId == id);
+            var publisher = _publService.Get(id);
 
             if (publisher == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);

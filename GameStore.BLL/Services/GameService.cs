@@ -12,11 +12,11 @@ namespace GameStore.BLL.Services
 {
     public class GameService : Service<Game>, IGameService
     {
-        private readonly IPlatformTypeRepository _ptRepository;
-        private readonly IGenreRepository _genreRepository;
+        private readonly IRepository<PlatformType> _ptRepository;
+        private readonly IRepository<Genre> _genreRepository;
         
         public GameService(IRepository<Game> gameRepository, IUnitOfWork unitOfWork,
-            IPlatformTypeRepository ptRepository, IGenreRepository genreRepository) 
+            IRepository<PlatformType> ptRepository, IRepository<Genre> genreRepository) 
             : base(gameRepository, unitOfWork)
         {
             _ptRepository = ptRepository;
@@ -41,13 +41,13 @@ namespace GameStore.BLL.Services
             game.GameName = updatedGame.GameName;
             game.Description = updatedGame.Description;
 
-            var updatedGenres = _genreRepository
-                .GetGenresByNames(updatedGame.Genres
-                .Select(g => g.GenreName));
+            var genreNames = updatedGame.Genres.Select(ug => ug.GenreName);
+            var updatedGenres = _genreRepository.Find(g => genreNames
+            .Any(ug => ug.Contains(g.GenreName)));
 
-            var updatedPt = _ptRepository
-                .GetPlatformTypesByNames(updatedGame.PlatformTypes
-                .Select(pt => pt.Type));
+            var ptNames = updatedGame.PlatformTypes.Select(pt => pt.Type);
+            var updatedPt = _ptRepository.Find(pt => ptNames
+            .Any(upt => upt.Contains(pt.Type)));
 
             game.Genres.RefreshItems(updatedGenres.ToList());
             game.PlatformTypes.RefreshItems(updatedPt.ToList());
@@ -70,7 +70,10 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<Game> GetGamesByPlatformTypes(IEnumerable<PlatformType> platformTypes)
         {
-            throw new NotImplementedException();
+            var types = platformTypes.Select(pt => pt.Type).ToList();
+
+            return _repository.GetWithIncludes(g => 
+                g.PlatformTypes.Any(pt => types.Contains(pt.Type)));
         }
 
     }   

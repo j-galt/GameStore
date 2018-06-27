@@ -17,3 +17,28 @@
 { "time": "2018-06-27 11:07:19.3701", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games/","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nPostman-Token:System.String[]"} }
 { "time": "2018-06-27 11:50:55.1027", "level": "INFO", "message": Configuring application started. }
 { "time": "2018-06-27 11:50:55.9503", "level": "FATAL", "message": test }
+{ "time": "2018-06-27 23:31:22.5469", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 23:31:28.9330", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-27 23:31:45.4168", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-27 23:31:45.4348", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games/","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nPostman-Token:System.String[]"} }
+{ "time": "2018-06-28 00:47:20.6339", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 00:47:27.3585", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 00:58:48.1990", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games/22","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nPostman-Token:System.String[]"} }
+{ "time": "2018-06-28 01:03:48.5006", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:03:50.8341", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:10:24.5864", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:10:26.2280", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:16:42.6830", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:16:43.3868", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:20:19.9849", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:20:21.4553", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:26:12.9826", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:26:13.8131", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:35:18.2414", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:35:19.1888", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:40:17.5387", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:40:18.3335", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:42:13.3196", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:42:14.0809", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-28 01:48:34.1687", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-28 01:48:35.0411", "level": "INFO", "message": Configuring application completed. Starting application. }

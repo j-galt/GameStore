@@ -15,7 +15,6 @@ namespace GameStore.Tests.GameStoreBLL.Services
 {
     public class GameServiceTests
     {
-        private Mock<IGameService> _mockGameService;
         private Mock<IRepository<Game>> _mockGameRepository;
         private Mock<IGenreRepository> _mockGenreRepository;
         private Mock<IPlatformTypeRepository> _mockPtRepository;
@@ -24,7 +23,6 @@ namespace GameStore.Tests.GameStoreBLL.Services
 
         public GameServiceTests()
         {
-            _mockGameService = new Mock<IGameService>();
             _mockGameRepository = new Mock<IRepository<Game>>();
             _mockUnitOfWork = new Mock<IUnitOfWork>();
             _mockGenreRepository = new Mock<IGenreRepository>();
@@ -186,17 +184,64 @@ namespace GameStore.Tests.GameStoreBLL.Services
         public void GetGamesByGenre_GetTestData_ShouldCallFind()
         {
             // Arrange
-            _mockGameRepository.Setup(r => r.Find(It.IsAny<Expression<Func<Game, bool>>>())).Returns(new List<Game>());
-            _mockGenreRepository.Setup(r => r.Find(It.IsAny<Expression<Func<Genre, bool>>>())).Returns(new List<Genre>() { new Genre { GenreName = "" } });
+            _mockGameRepository.Setup(r => r.Find(It.IsAny<Expression<Func<Game, bool>>>()))
+                .Returns(new List<Game>());
+            _mockGenreRepository.Setup(r => r.Find(It.IsAny<Expression<Func<Genre, bool>>>()))
+                .Returns(new List<Genre>() { new Genre { GenreName = "FPS" } });
+
             var gameService = new GameService(_mockGameRepository.Object, null,
                 null, _mockGenreRepository.Object);
 
             // Act 
             var result = gameService.GetGamesByGenre(It.IsAny<string>());
 
+            // Assert
             _mockGameRepository.Verify(r => r.Find(It.IsAny<Expression<Func<Game, bool>>>()), Times.Once);
         }
 
+        [Fact]
+        public void GetGamesByPlatformTypes_TestDataPassed_ShouldCallGetWithIncludes()
+        {
+            // Arrange
+            _mockGameRepository.Setup(r => r.GetWithIncludes(It.IsAny<Expression<Func<Game, bool>>>()))
+                .Returns(new List<Game>());
 
+            var gameService = new GameService(_mockGameRepository.Object, null, null, null);
+
+            // Act 
+            var result = gameService.GetGamesByPlatformTypes(new List<PlatformType>()
+            {
+                new PlatformType { Type = "PC" }
+            });
+
+            // Assert
+            _mockGameRepository.Verify(r => r.GetWithIncludes(It.IsAny<Expression<Func<Game, bool>>>()), 
+                Times.Once);
+        }
+
+        [Fact]
+        public void Delete_NullPassed_ShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var gameService = new GameService(_mockGameRepository.Object, null, null, null);
+
+            // Act and Assert
+            Assert.Throws<ArgumentNullException>(() => gameService.Delete(null));
+        }
+
+        [Fact]
+        public void Delete_TestDataPassed_ShouldCallRemove()
+        {
+            // Arrange
+            _mockGameRepository.Setup(r => r.Remove(It.IsAny<Game>()));
+            var gameService = new GameService(_mockGameRepository.Object, 
+                _mockUnitOfWork.Object, null, null);
+
+            // Act 
+            gameService.Delete(new Game());
+
+            // Assert
+            _mockGameRepository.Verify(r => r.Remove(It.IsAny<Game>()), Times.Once);
+        }
     }
 }

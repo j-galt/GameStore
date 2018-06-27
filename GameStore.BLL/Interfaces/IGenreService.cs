@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 namespace GameStore.BLL.Interfaces
 {
     public interface IGenreService : IService<Genre>
-    {       
+    {
+        Genre Get(string name);
+        Genre Edit(string id, Genre updatedEntity);
     }
 }

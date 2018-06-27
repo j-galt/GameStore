@@ -36,9 +36,9 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, gameResources);
         }
 
-        public HttpResponseMessage GetGenre(string name)
+        public HttpResponseMessage GetGenre(string id)
         {
-            var genre = _genreService.Get(g => g.GenreName == name);
+            var genre = _genreService.Get(id);
 
             if (genre == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -62,7 +62,8 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, getGameRes);
         }
 
-        public HttpResponseMessage EditGenre(int id, [FromBody] GenreResource genreResource)
+        [HttpPut]
+        public HttpResponseMessage EditGenre(string id, [FromBody] GenreResource genreResource)
         {
             if (genreResource == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -77,15 +78,15 @@ namespace GameStore.Web.ApiControllers
             return Request.CreateResponse(HttpStatusCode.OK, genreRes);
         }
 
-        public HttpResponseMessage DeleteGenre(string name)
+        public HttpResponseMessage DeleteGenre(string id)
         {
-            var genre = _genreService.Get(g => g.GenreName == name);
+            var genre = _genreService.Get(id);
 
             if (genre == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
 
             _genreService.Delete(genre);
-            return Request.CreateResponse(HttpStatusCode.OK, name);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
         }
     }
 }
