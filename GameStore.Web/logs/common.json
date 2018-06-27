@@ -1,0 +1,19 @@
+{ "time": "2018-06-27 09:56:42.2898", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:08:19.7478", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:20:45.6689", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:21:13.9953", "level": "WARN", "message": {"details":"Entity not found in db","user":"Anonimous","entity":"Game","id":100} }
+{ "time": "2018-06-27 10:23:51.7924", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:27:29.8384", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:35:38.9061", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:42:16.8617", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:51:42.3833", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 10:51:43.0929", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-27 11:04:07.1553", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 11:04:07.9174", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-27 11:04:29.9613", "level": "WARN", "message": {"details":"Entity not found in db","user":"Anonimous","entity":"Game","id":100} }
+{ "time": "2018-06-27 11:06:07.7016", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 11:06:08.5890", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-27 11:07:19.3591", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-27 11:07:19.3701", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games/","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nPostman-Token:System.String[]"} }
+{ "time": "2018-06-27 11:50:55.1027", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-27 11:50:55.9503", "level": "FATAL", "message": test }
