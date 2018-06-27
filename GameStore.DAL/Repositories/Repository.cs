@@ -23,7 +23,7 @@ namespace GameStore.DAL.Repositories
                 .Aggregate(_dbContext.Set<T>().AsQueryable(), 
                 (current, include) => current.Include(include));
 
-            return query.Where(predicate);
+            return query.Where(predicate).AsEnumerable();
         }
 
         public T Get(int id)

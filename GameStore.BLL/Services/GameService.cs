@@ -63,6 +63,8 @@ namespace GameStore.BLL.Services
                 .Find(g => g.GenreName == name)
                 .FirstOrDefault();
 
+            if (genre == null) throw new ArgumentNullException();
+
             return _repository.Find(g => g.Genres.Contains(genre));
         }
 
@@ -70,7 +72,6 @@ namespace GameStore.BLL.Services
         {
             throw new NotImplementedException();
         }
-
 
     }   
 }

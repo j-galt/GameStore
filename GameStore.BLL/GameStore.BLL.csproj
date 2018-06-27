@@ -70,6 +70,7 @@
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\PublisherService.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Utilities\GameComparer.cs" />
     <Compile Include="Utilities\ICollectionExtensions.cs" />
   </ItemGroup>
   <ItemGroup />

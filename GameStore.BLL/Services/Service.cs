@@ -43,10 +43,13 @@ namespace GameStore.BLL.Services
         public virtual T Get(Expression<Func<T, bool>> predicate, 
             params Expression<Func<T, object>>[] includes)
         {
-            var entity = _repository.GetWithIncludes(predicate, includes);
-            if (entity == null) throw new ArgumentNullException(nameof(entity));
+            var entities = _repository
+                .GetWithIncludes(predicate, includes)
+                .FirstOrDefault();
 
-            return entity.FirstOrDefault();
+            if (entities == null) throw new ArgumentNullException(nameof(entities));
+
+            return entities;
         }
 
         public virtual IEnumerable<T> GetAll()
