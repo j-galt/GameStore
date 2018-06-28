@@ -166,6 +166,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="NLog.config" />
+    <Content Include="logs\common.json" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

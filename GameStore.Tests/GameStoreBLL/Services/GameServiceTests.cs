@@ -16,8 +16,8 @@ namespace GameStore.Tests.GameStoreBLL.Services
     public class GameServiceTests
     {
         private Mock<IRepository<Game>> _mockGameRepository;
-        private Mock<IGenreRepository> _mockGenreRepository;
-        private Mock<IPlatformTypeRepository> _mockPtRepository;
+        private Mock<IRepository<Genre>> _mockGenreRepository;
+        private Mock<IRepository<PlatformType>> _mockPtRepository;
         private Mock<IUnitOfWork> _mockUnitOfWork;
         private int invalidId = -1;
 
@@ -25,11 +25,11 @@ namespace GameStore.Tests.GameStoreBLL.Services
         {
             _mockGameRepository = new Mock<IRepository<Game>>();
             _mockUnitOfWork = new Mock<IUnitOfWork>();
-            _mockGenreRepository = new Mock<IGenreRepository>();
-            _mockPtRepository = new Mock<IPlatformTypeRepository>();
+            _mockGenreRepository = new Mock<IRepository<Genre>>();
+            _mockPtRepository = new Mock<IRepository<PlatformType>>();
         }
 
-        private static List<Game> GetTestGames()
+        public static List<Game> GetTestGames()
         {
             return new List<Game>()
             {
