@@ -1,17 +1,16 @@
-﻿using GameStore.Web.Utils;
+﻿using GameStore.Web.Infrastructure;
+using GameStore.Web.Utils;
 using Newtonsoft.Json;
 using NLog;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http.Filters;
 
-namespace GameStore.Web.Infrastructure
+namespace GamesStore.Infrastructure
 {
     public class CustomErrorFilter : IExceptionFilter
     {

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form action="api/games" method="post" id="postGameForm">
+        <p><b>Create game with form submit</b></p>
+        <input type="text" id="GameName" name="gameResource.GameName" value="Super Mario Brothers">Name<br>
+        <input type="text" id="Description" name="gameResource.Description" value="Horror">Description<br>
+        <input type="submit" value="Create Game"><br><br>
+    </form>
+
+    <p><b>Get games with ajax</b></p>
+    <button type="button" onclick="getGames()">Get All Games</button><br><br>
+    <div id="getGamesInfo" style="background-color:aqua"></div>
+    <script>
+        function getGames() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("getGamesInfo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("GET", "api/games", true);
+            xhttp.send();
+        }
+
+        function postGame() {
+            var form = document.getElementById("postGameForm");
+            var requestBody = objectifyForm(form);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 201) {
+                    document.getElementById("postGameInfo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("POST", "api/games", true);
+            xhttp.setRequestHeader('Content-Type', 'application/json');
+            xhttp.send(requestBody);
+        }
+
+        function objectifyForm(formArray) {//serialize data function
+
+            var formString = "{";
+            for (var i = 0; i < formArray.length - 1; i++) {
+                inputString = "\"" + [formArray[i]['name']] + "\":\"" + formArray[i]['value'] + "\",";
+                formString = formString + inputString;
+            }
+            return formString + "}";
+        }
+    </script>
+</body>
+</html>

@@ -2,6 +2,8 @@
 using GameStore.BLL.Entities;
 using GameStore.BLL.Interfaces;
 using GameStore.Web.ApiResources;
+using GameStore.Web.Infrastructure;
+using NLog;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,19 +22,21 @@ namespace GameStore.Web.ApiControllers
         private readonly ICommentService _commentService;
         private readonly IGenreService _genreService;
         private readonly IMapper _mapper;
+        //public ILogger _logger;
 
         public GamesController(IGameService gameService, ICommentService commentService, 
-            IGenreService genreService,  IMapper mapper)
+            IGenreService genreService, IMapper mapper)
         {
             _gameService = gameService;
             _commentService = commentService;
             _genreService = genreService;
             _mapper = mapper;
+            //_logger = logger;
         }
 
         public IHttpActionResult GetAllGames()
         {
-            var games = _gameService.GetAll();
+            var games = _gameService.GetAll().ToList();
 
             if (games == null)
                 return NotFound();
@@ -82,6 +86,7 @@ namespace GameStore.Web.ApiControllers
             return Ok(games);
         }
 
+        //[CustomErrorFilter(_logger)]
         public IHttpActionResult CreateGame([FromBody] CreateGameResource gameResource)
         {
             if (gameResource == null)
@@ -125,6 +130,7 @@ namespace GameStore.Web.ApiControllers
         }
 
         [Route("{id}/download")]
+        [HttpGet]
         public IHttpActionResult DownloadGame()
         {
             var stream = new MemoryStream();

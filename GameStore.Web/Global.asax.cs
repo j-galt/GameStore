@@ -9,6 +9,7 @@ using System.Web.SessionState;
 using System.Web.Http;
 using GameStore.Web.App_Start;
 using GameStore.Web.Infrastructure;
+using GamesStore.Infrastructure;
 
 namespace GameStore.Web
 {
@@ -26,8 +27,8 @@ namespace GameStore.Web
                 GlobalConfiguration.Configure(WebApiConfig.Register);
                 RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-                //GlobalConfiguration.Configuration.Filters.Add(new CustomErrorFilter(logger));
-                //GlobalConfiguration.Configuration.Filters.Add(new CustomValidationFilter(logger));
+                GlobalConfiguration.Configuration.Filters.Add(new CustomErrorFilter(logger));
+                GlobalConfiguration.Configuration.Filters.Add(new CustomValidationFilter(logger));
             }
             catch (Exception exception)
             {

@@ -42,3 +42,74 @@
 { "time": "2018-06-28 01:42:14.0809", "level": "INFO", "message": Configuring application completed. Starting application. }
 { "time": "2018-06-28 01:48:34.1687", "level": "INFO", "message": Configuring application started. }
 { "time": "2018-06-28 01:48:35.0411", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 10:52:17.9276", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 10:52:21.0041", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:07:48.0040", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:07:54.7164", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:09:28.0328", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:09:28.7599", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:10:21.9207", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:10:22.3784", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:10:53.0959", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:10:53.6185", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:15:27.3109", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:15:28.0663", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:16:24.0100", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:16:24.7038", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:16:40.9340", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:16:41.3367", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:17:42.1928", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:21:52.2423", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:31:44.0032", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:31:48.8312", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:32:16.6159", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:32:20.7482", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:35:06.3988", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:35:07.2326", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:35:45.8554", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:35:49.2825", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:36:06.5362", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:36:09.3652", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:38:51.7038", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:39:00.2460", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:39:38.0931", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:39:39.4398", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:40:08.7359", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]"} }
+{ "time": "2018-06-29 11:40:37.4730", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]"} }
+{ "time": "2018-06-29 11:42:34.6724", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:42:34.6724", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:43:06.9016", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:45:14.7114", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:45:14.7114", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:45:18.1272", "level": "WARN", "message": {"details":"Model validation failed","user":"Anonymous","modelState":{"gameResource.GameName":["Требуется поле GameName."]}} }
+{ "time": "2018-06-29 11:45:18.1272", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 11:56:38.7730", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 11:56:41.3988", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 11:57:43.3818", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/games/2/genres","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]"} }
+{ "time": "2018-06-29 12:01:55.0759", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:63270/api/Games","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nReferer:System.String[]\r\nUser-Agent:System.String[]\r\nOrigin:System.String[]"} }
+{ "time": "2018-06-29 12:07:19.2225", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:07:22.6481", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:22:43.8106", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:22:45.6501", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:25:23.7280", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:25:25.7044", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:25:53.5891", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 12:26:16.1163", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:26:16.4811", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:26:29.2887", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 12:27:33.4382", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:27:33.6840", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:27:45.3198", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Cache-Control:System.String[]\r\nConnection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 12:34:19.6714", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:34:22.0035", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:34:24.6923", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:34:29.8913", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:35:39.6691", "level": "ERROR", "message": {"details":"Http request failed","user":"Anonimous","url":"http://localhost:8001/api/games","headers":"Connection:System.String[]\r\nAccept:System.String[]\r\nAccept-Encoding:System.String[]\r\nAccept-Language:System.String[]\r\nHost:System.String[]\r\nUser-Agent:System.String[]\r\nUpgrade-Insecure-Requests:System.String[]"} }
+{ "time": "2018-06-29 12:40:38.1059", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:40:40.2565", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:41:14.9299", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:41:18.9932", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:54:33.9572", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:54:35.2903", "level": "INFO", "message": Configuring application completed. Starting application. }
+{ "time": "2018-06-29 12:54:51.3628", "level": "INFO", "message": Configuring application started. }
+{ "time": "2018-06-29 12:54:52.2233", "level": "INFO", "message": Configuring application completed. Starting application. }
