@@ -7,6 +7,7 @@ using GameStore.BLL.Interfaces;
 using GameStore.BLL.Services;
 using GameStore.DAL;
 using GameStore.DAL.Repositories;
+using GameStore.Web.Infrastructure;
 using GameStore.Web.Mapping;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace GameStore.Web.App_Start
             builder.RegisterType<CommentService>().As<ICommentService>().InstancePerRequest();
             builder.RegisterType<PublisherService>().As<IPublisherService>().InstancePerRequest();
             builder.RegisterType<GenreService>().As<IGenreService>().InstancePerRequest();
+            builder.RegisterType<TrackUserIPAttribute>().PropertiesAutowired().InstancePerRequest();
 
             var container = builder.Build();
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

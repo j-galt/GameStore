@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GameStore.Web.Utils
+namespace GameStore.Web.Infrastructure
 {
     public static class LogMessageComposer
     {

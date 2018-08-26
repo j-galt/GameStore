@@ -9,7 +9,7 @@ using System.Web.SessionState;
 using System.Web.Http;
 using GameStore.Web.App_Start;
 using GameStore.Web.Infrastructure;
-using GamesStore.Infrastructure;
+using GamesStore.Web.Infrastructure;
 
 namespace GameStore.Web
 {

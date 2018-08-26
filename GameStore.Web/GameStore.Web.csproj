@@ -169,6 +169,8 @@
     <Compile Include="Infrastructure\CustomApiException.cs" />
     <Compile Include="Infrastructure\CustomErrorFilter.cs" />
     <Compile Include="Infrastructure\CustomValidationFilter.cs" />
+    <Compile Include="Infrastructure\HttpRequestMessageExtensions.cs" />
+    <Compile Include="Infrastructure\TrackUserIPAttribute.cs" />
     <Compile Include="Mapping\MappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\LogMessageComposer.cs" />
@@ -190,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Infrastructure\NewFolder1\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

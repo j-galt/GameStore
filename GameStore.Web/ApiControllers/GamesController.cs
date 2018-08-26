@@ -3,7 +3,7 @@ using GameStore.BLL.Entities;
 using GameStore.BLL.Interfaces;
 using GameStore.Web.ApiResources;
 using GameStore.Web.Infrastructure;
-using NLog;
+using Autofac.Extras.NLog;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,16 +22,16 @@ namespace GameStore.Web.ApiControllers
         private readonly ICommentService _commentService;
         private readonly IGenreService _genreService;
         private readonly IMapper _mapper;
-        //public ILogger _logger;
+        public ILogger _logger;
 
         public GamesController(IGameService gameService, ICommentService commentService, 
-            IGenreService genreService, IMapper mapper)
+            IGenreService genreService, IMapper mapper, ILogger logger)
         {
             _gameService = gameService;
             _commentService = commentService;
             _genreService = genreService;
             _mapper = mapper;
-            //_logger = logger;
+            _logger = logger;
         }
 
         public IHttpActionResult GetAllGames()
@@ -47,12 +47,24 @@ namespace GameStore.Web.ApiControllers
             return Ok(gameResources);
         }
 
+        [TrackUserIP]
         public IHttpActionResult GetGame(int id)
         {
+            var s = HttpContext.Current.Request.UserHostAddress;
             var game = _gameService.Get(id);
 
             if (game == null)
+            {
+                _logger.Warn(LogMessageComposer.Compose(new
+                {
+                    details = "Entity not found in db",
+                    user = "Anonimous",
+                    entity = typeof(Game).Name,
+                    id
+                }));
+
                 return NotFound();
+            }
 
             var gameResource = _mapper.Map<Game, GetGameResource>(game);
             return Ok(gameResource);
@@ -86,11 +98,18 @@ namespace GameStore.Web.ApiControllers
             return Ok(games);
         }
 
-        //[CustomErrorFilter(_logger)]
         public IHttpActionResult CreateGame([FromBody] CreateGameResource gameResource)
         {
             if (gameResource == null)
+            {
+                _logger.Warn(LogMessageComposer.Compose(new
+                {
+                    details = "Serialization error.",
+                    user = "Anonymous"
+                }));
+
                 return NotFound();
+            }
 
             if (!ModelState.IsValid)
                 return BadRequest();

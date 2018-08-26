@@ -1,5 +1,4 @@
 ﻿using GameStore.Web.Infrastructure;
-using GameStore.Web.Utils;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -8,9 +7,10 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http.Filters;
 
-namespace GamesStore.Infrastructure
+namespace GamesStore.Web.Infrastructure
 {
     public class CustomErrorFilter : IExceptionFilter
     {
@@ -47,13 +47,14 @@ namespace GamesStore.Infrastructure
             {
                 code = HttpStatusCode.InternalServerError;
                 var r = context.Request;
+                var ip = context.Request.GetClientIpAddress();
                 var headers = string.Join(Environment.NewLine, r.Headers.Select(x => $"{x.Key}:{x.Value}"));
                 _log.Error(exception,
                     LogMessageComposer.Compose(
                     new
                     {
                         details = "Http request failed",
-                        user = "Anonimous",
+                        user = "Anonymous " + ip,
                         url = r.RequestUri,
                         headers
                         //TODO: Log here other usefull information which can be retrieved.
